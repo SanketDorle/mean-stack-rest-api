@@ -1,0 +1,54 @@
+<div class="hold-transition login-page custom-login-page">
+	<div class="login-box custom-login-box">
+		<div class="login-logo">
+			<a href=""><b>Admin</b>LTE</a>
+		</div>
+		<div class="login-box-body">
+			<p class="login-box-msg">Sign in to start your session</p>
+			<div class="alert alert-danger" *ngIf="error">
+				<strong>Error! </strong>{{error}}
+			</div>
+			<form (submit)="register()" [formGroup]="form">
+				<div class="form-group has-feedback">
+					<input type="firstname" class="form-control" formControlName="firstname" placeholder="Firstname">
+					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input type="lastname" class="form-control" formControlName="lastname" placeholder="Lastname">
+					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input type="email" class="form-control" formControlName="email" placeholder="Email">
+					<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+				</div>
+				<div class="form-group has-feedback">
+					<input type="password" class="form-control" formControlName="password" placeholder="Password">
+					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+				</div>
+				<div class="row">
+					<div class="col-xs-8">
+						<div class="checkbox">
+							<label>
+              <input type="checkbox"> Remember Me
+            </label>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+					</div>
+				</div>
+			</form>
+
+			<div class="social-auth-links text-center">
+				<p>- OR -</p>
+				<a class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+        Facebook</a>
+				<a class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+        Google+</a>
+			</div>
+
+			<a>I forgot my password</a><br>
+			<a routerLink="/login" class="text-center">Already registered? Login</a>
+		</div>
+	</div>
+</div>

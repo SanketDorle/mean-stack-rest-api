@@ -3,6 +3,7 @@
 var express = require('express');
 var port = process.env.PORT || 3000;
 var http = require('http');
+var path = require('path');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
@@ -16,15 +17,16 @@ mongoose.connect('mongodb://localhost/rest_test');
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, './angular/dist')));
 
 // Routes
 app.use('/', api);
 
 
 // Handle route
-app.get('/', function (req, res) {
-    res.send('It works');
-});
+// app.get('/', function (req, res) {
+//     // res.send('It works');
+// });
 app.get('*', function (req, res) {
     res.redirect('/');
 });
