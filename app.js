@@ -19,6 +19,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './angular/dist')));
 
+app.use(function (req, res, next) {
+	res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+	next();
+});
+
 // Routes
 app.use('/', api);
 

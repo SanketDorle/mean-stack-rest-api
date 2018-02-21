@@ -29,7 +29,7 @@ router.post('/login', function (req, res, next) {
                     if (result) {
                         res.send({
 							"success": true,
-							"message": "Login Sucessfully."
+							"message": "Login successfully."
 						});
 					} else {
 						res.send({
@@ -58,11 +58,14 @@ router.post('/register',(req,res)=>{
         }
         register.create(user, function(err,succ){
             if(err){
-                res.send(err);
+                res.send({
+                    "success": false,
+                    "error":"Failed User Registration"
+                });
             }else{
                 res.send({
-                    "sucess": true,
-                    "message":"User Register Sucessfully"
+                    "success": true,
+                    "message":"User Register successfully"
                 });
             }
         })
